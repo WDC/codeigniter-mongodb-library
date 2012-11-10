@@ -478,9 +478,9 @@ class Mongo_db {
 	
 	public function like($field = "", $value = "", $flags = "i", $enable_start_wildcard = TRUE, $enable_end_wildcard = TRUE)
 	 {
-	 	$field = (string) trim($field);
+	 	$field = $field;
 	 	$this->_where_init($field);
-	 	$value = (string) trim($value);
+	 	$value = $value;
 	 	$value = quotemeta($value);
 	 	
 	 	if ($enable_start_wildcard !== TRUE)
@@ -1433,15 +1433,15 @@ class Mongo_db {
 	{
 		$this->CI->config->load($this->config_file);
 		
-		$this->host	= trim($this->CI->config->item('mongo_host'));
-		$this->port = trim($this->CI->config->item('mongo_port'));
-		$this->user = trim($this->CI->config->item('mongo_user'));
-		$this->pass = trim($this->CI->config->item('mongo_pass'));
-		$this->dbname = trim($this->CI->config->item('mongo_db'));
-		$this->persist = trim($this->CI->config->item('mongo_persist'));
-		$this->persist_key = trim($this->CI->config->item('mongo_persist_key'));
-		$this->query_safety = trim($this->CI->config->item('mongo_query_safety'));
-		$dbhostflag = (bool)$this->CI->config->item('host_db_flag');
+		$this->host         = $this->CI->config->item('mongo_host');
+		$this->port         = $this->CI->config->item('mongo_port');
+		$this->user         = $this->CI->config->item('mongo_user');
+		$this->pass         = $this->CI->config->item('mongo_pass');
+		$this->dbname       = $this->CI->config->item('mongo_db');
+		$this->persist      = $this->CI->config->item('mongo_persist');
+		$this->persist_key  = $this->CI->config->item('mongo_persist_key');
+		$this->query_safety = $this->CI->config->item('mongo_query_safety');
+		$dbhostflag         = $this->CI->config->item('host_db_flag');
 		
 		$connection_string = "mongodb://";
 		
@@ -1471,12 +1471,12 @@ class Mongo_db {
 		
 		if ($dbhostflag === TRUE)
 		{
-			$this->connection_string = trim($connection_string) . '/' . $this->dbname;
+			$this->connection_string = $connection_string . '/' . $this->dbname;
 		}
 		
 		else
 		{
-			$this->connection_string = trim($connection_string);
+			$this->connection_string = $connection_string;
 		}
 	}
 	
